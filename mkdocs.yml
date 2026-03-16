@@ -128,6 +128,7 @@ nav:
         - Data Sources: operations/configuration/datasources.md
         - File Storage: operations/configuration/file-storage.md
     - Database: operations/database.md
+    - Observability: operations/observability.md
     - Scaling: operations/scaling.md
 - Development:
   - Overview: development/overview.md

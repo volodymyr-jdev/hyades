@@ -64,6 +64,20 @@
     via a fallback mechanism. However, they are deprecated and support will be removed in a future release.
     Users are encouraged to update their configurations at their earliest convenience.
 
+* **Health and metrics endpoints have moved to a dedicated management server** that listens
+  on a separate port (default `9000`). The management server starts before init tasks, making
+  health probes available during the entire startup sequence.
+
+    | Endpoint  | Before                              | After                               |
+    |:----------|:------------------------------------|:------------------------------------|
+    | Health    | `http://<host>:8080/health`         | `http://<host>:9000/health`         |
+    | Liveness  | `http://<host>:8080/health/live`    | `http://<host>:9000/health/live`    |
+    | Readiness | `http://<host>:8080/health/ready`   | `http://<host>:9000/health/ready`   |
+    | Startup   | `http://<host>:8080/health/started` | `http://<host>:9000/health/started` |
+    | Metrics   | `http://<host>:8080/metrics`        | `http://<host>:9000/metrics`        |
+
+    Refer to the [observability documentation](../operations/observability.md) for details.
+
 * The following init task configurations have been removed and replaced with `init.tasks.datasource.name`:
     * `init.tasks.database.url`
     * `init.tasks.database.username`

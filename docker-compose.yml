@@ -30,7 +30,7 @@ services:
       DT_DATASOURCE_USERNAME: "dtrack"
       DT_DATASOURCE_PASSWORD: "dtrack"
       DT_DATASOURCE_POOL_ENABLED: "false"
-      INIT_AND_EXIT: "true"
+      DT_INIT_AND_EXIT: "true"
     volumes:
       - "apiserver-data:/data"
     restart: on-failure
@@ -52,9 +52,8 @@ services:
       DT_DATASOURCE_URL: "jdbc:postgresql://dt-postgres:5432/dtrack?reWriteBatchedInserts=true"
       DT_DATASOURCE_USERNAME: "dtrack"
       DT_DATASOURCE_PASSWORD: "dtrack"
-      ALPINE_METRICS_ENABLED: "true"
-      INTEGRITY_CHECK_ENABLED: "true"
-      INIT_TASKS_ENABLED: "false"
+      DT_METRICS_ENABLED: "true"
+      DT_INIT_TASKS_ENABLED: "false"
     ports:
       - "127.0.0.1:8080:8080"
     volumes:

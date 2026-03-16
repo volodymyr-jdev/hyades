@@ -46,6 +46,24 @@ Access to the metrics endpoint can optionally be protected with HTTP Basic authe
 
 Both must be set for authentication to take effect.
 
+## Logging
+
+By default, Dependency-Track logs at `INFO` level for application loggers (`alpine`, `org.dependencytrack`,
+`org.eclipse.jetty`) and `WARN` for all others.
+
+Log levels can be configured per logger as follows:
+
+```properties
+dt.logging.level."org.dependencytrack"=DEBUG
+dt.logging.level."org.eclipse.jetty"=WARN
+dt.logging.level."ROOT"=ERROR
+```
+
+The special logger name `ROOT` applies to all loggers that are not explicitly configured.
+
+Refer to the [environment variable mapping](configuration/overview.md#environment-variable-mapping) documentation
+for how to express these properties as environment variables.
+
 [MicroProfile Health]: https://download.eclipse.org/microprofile/microprofile-health-4.0.1/microprofile-health-spec-4.0.1.html
 [probe types]: https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/
 [Prometheus text exposition format]: https://prometheus.io/docs/instrumenting/exposition_formats/#text-based-format

@@ -78,6 +78,9 @@
 
     Refer to the [observability documentation](../operations/observability.md) for details.
 
+* **The `LOGGING_LEVEL` environment variable has been removed**. Log levels are now configured
+  via `dt.logging.level."<logger-name>"` per-logger properties.
+  Refer to the [logging documentation](../operations/observability.md#logging) for details.
 * The following init task configurations have been removed and replaced with `init.tasks.datasource.name`:
     * `init.tasks.database.url`
     * `init.tasks.database.username`

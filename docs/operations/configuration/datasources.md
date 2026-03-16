@@ -1,8 +1,5 @@
 # Data Sources
 
-!!! warning
-    This document is only applicable to the API server component.
-
 Data sources are logical objects through which database connections can be acquired.
 
 ## How It Works
@@ -152,7 +149,7 @@ services:
       DT_DATASOURCE_INIT_PASSWORD: "dtrack"
       DT_DATASOURCE_INIT_POOL_ENABLED: "false"
       # Configure initialisation tasks to use the above data source.
-      INIT_TASKS_DATASOURCE_NAME: "init"
+      DT_INIT_TASKS_DATASOURCE_NAME: "init"
 ```
 
 [PgBouncer]: https://www.pgbouncer.org/

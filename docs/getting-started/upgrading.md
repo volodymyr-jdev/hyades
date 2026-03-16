@@ -42,6 +42,28 @@
       However, support for `alpine.database.*` configs will be removed prior to the GA release.
     * The new datasource configuration mechanism is documented [here](../operations/configuration/datasources.md).  
 
+* **All configuration properties have been standardized to use the `dt.` prefix**.                                                                                
+  Properties that previously used the `alpine.` prefix, or no prefix at all, are now under `dt.`.
+  For example:
+
+    | Before                               | After                                   |
+    |--------------------------------------|-----------------------------------------|
+    | `alpine.ldap.enabled`                | `dt.ldap.enabled`                       |
+    | `alpine.oidc.enabled`                | `dt.oidc.enabled`                       |
+    | `task.portfolio.metrics.update.cron` | `dt.task.portfolio.metrics.update.cron` |
+
+    * The naming rule is straightforward:
+        * `alpine.<suffix>` → `dt.<suffix>` (for all former `alpine.*` properties)
+        * `<name>` → `dt.<name>` (for all previously unprefixed properties)
+
+    When using environment variables, the same mapping applies: `ALPINE_LDAP_ENABLED` becomes
+    `DT_LDAP_ENABLED`, `TASK_PORTFOLIO_METRICS_UPDATE_CRON` becomes `DT_TASK_PORTFOLIO_METRICS_UPDATE_CRON`,
+    and so on.
+
+    No immediate action is required. Old property names and environment variables continue to work
+    via a fallback mechanism. However, they are deprecated and support will be removed in a future release.
+    Users are encouraged to update their configurations at their earliest convenience.
+
 * The following init task configurations have been removed and replaced with `init.tasks.datasource.name`:
     * `init.tasks.database.url`
     * `init.tasks.database.username`

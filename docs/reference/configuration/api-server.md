@@ -4894,6 +4894,66 @@ Defines the interval in milliseconds in which the notification outbox relay will
 
 ## Observability
 
+### dt.management.host
+
+Defines the host for the management server, which exposes  health and metrics endpoints independently of the main server.  
+
+
+
+<table>
+  <tbody style="border: 0">
+    <tr>
+      <th style="text-align: right">Required</th>
+      <td style="border-width: 0">false</td>
+    </tr>
+    <tr>
+      <th style="text-align: right">Type</th>
+      <td style="border-width: 0"><code>string</code></td>
+    </tr>
+    <tr>
+      <th style="text-align: right">Default</th>
+      <td style="border-width: 0"><code>0.0.0.0</code></td>
+    </tr>
+    <tr>
+      <th style="text-align: right">ENV</th>
+      <td style="border-width: 0"><code>DT_MANAGEMENT_HOST</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+---
+
+### dt.management.port
+
+Defines the port for the management server, which exposes  health and metrics endpoints independently of the main server.  
+
+
+
+<table>
+  <tbody style="border: 0">
+    <tr>
+      <th style="text-align: right">Required</th>
+      <td style="border-width: 0">false</td>
+    </tr>
+    <tr>
+      <th style="text-align: right">Type</th>
+      <td style="border-width: 0"><code>integer</code></td>
+    </tr>
+    <tr>
+      <th style="text-align: right">Default</th>
+      <td style="border-width: 0"><code>9000</code></td>
+    </tr>
+    <tr>
+      <th style="text-align: right">ENV</th>
+      <td style="border-width: 0"><code>DT_MANAGEMENT_PORT</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+---
+
 ### dt.metrics.auth.password
 
 Defines the password required to access metrics.  Has no effect when [`dt.metrics.auth.username`](#dtmetricsauthusername) is not set.  
@@ -4956,7 +5016,7 @@ Defines the username required to access metrics.  Has no effect when [`dt.metric
 
 ### dt.metrics.enabled
 
-Defines whether Prometheus metrics will be exposed.  If enabled, metrics will be available via the /metrics endpoint.  
+Defines whether Prometheus metrics will be exposed.  If enabled, metrics will be available via the /metrics endpoint  of the management server.  
 
 
 

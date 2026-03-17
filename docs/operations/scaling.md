@@ -201,8 +201,8 @@ Decrease `poll-interval-ms` for lower notification latency.
 
 Configuration:
 
-- [`notification.outbox-relay.poll-interval-ms`](../reference/configuration/api-server.md#notificationoutbox-relaypoll-interval-ms)
-- [`notification.outbox-relay.batch-size`](../reference/configuration/api-server.md#notificationoutbox-relaybatch-size)
+- [`notification.outbox-relay.poll-interval-ms`](../reference/configuration/api-server.md#dtnotificationoutbox-relaypoll-interval-ms)
+- [`notification.outbox-relay.batch-size`](../reference/configuration/api-server.md#dtnotificationoutbox-relaybatch-size)
 
 ## Separate Database for Dex
 

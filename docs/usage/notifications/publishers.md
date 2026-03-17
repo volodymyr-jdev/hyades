@@ -64,7 +64,7 @@ The global configuration defines how Dependency-Track connects to your Kafka clu
 
 !!! note "Configuring mTLS"
     When enabling [mutual TLS], you **must** provide a client certificate and key in [PEM] format.
-    Both **must not** be encrypted. The client key **must** be a [managed secret](../secret-management/overview.md).
+    Both **must not** be encrypted. The client key **must** be a [managed secret](../../operations/secret-management/overview.md).
 
 !!! note "Default Producer Configs"
     Dependency-Track applies the following [configs](https://kafka.apache.org/41/configuration/producer-configs/)

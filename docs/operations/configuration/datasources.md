@@ -21,7 +21,7 @@ as well as the vast majority of background processing.
 
 Certain features of Dependency-Track can be configured to use
 a different data source than `default`. For example, the 
-[*database* secret management provider](../../usage/secret-management/providers.md#database).
+[*database* secret management provider](../../operations/secret-management/providers.md#database).
 Instead of database connection details, they accept a *data source name*, e.g. via
 [`dt.secret-management.database.datasource.name`](../../reference/configuration/api-server.md#dtsecret-managementdatabasedatasourcename).
 

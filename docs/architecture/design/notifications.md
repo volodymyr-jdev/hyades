@@ -72,7 +72,7 @@ Notifications that have no matching rules are discarded immediately.
 
 The outbox relay is a background process that continuously polls the `NOTIFICATION_OUTBOX` table,
 routes notifications to matching rules, and schedules publishing workflows.
-The polling interval is configurable via [`notification.outbox-relay.poll-interval-ms`](../../reference/configuration/api-server.md#notificationoutbox-relaypoll-interval-ms),
+The polling interval is configurable via [`dt.notification.outbox-relay.poll-interval-ms`](../../reference/configuration/api-server.md#dtnotificationoutbox-relaypoll-interval-ms),
 and defaults to 1 second.
 
 ```mermaid
@@ -103,7 +103,7 @@ sequenceDiagram
 Transaction-level [advisory locks] prevent concurrent relay cycles across multiple API server instances.
 This ensures notifications are relayed in approximately the order they were emitted.
 The lack of concurrency is offset by batch processing. The batch size is configurable
-via [`notification.outbox-relay.batch-size`](../../reference/configuration/api-server.md#notificationoutbox-relaybatch-size)
+via [`dt.notification.outbox-relay.batch-size`](../../reference/configuration/api-server.md#dtnotificationoutbox-relaybatch-size)
 and defaults to 100.
 
 ### Routing

@@ -93,9 +93,6 @@ nav:
         - Overview: usage/notifications/overview.md
         - Publishers: usage/notifications/publishers.md
         - Templating: usage/notifications/templating.md
-    - Secret Management:
-        - Overview: usage/secret-management/overview.md
-        - Providers: usage/secret-management/providers.md
     - Access Control:
         - Roles: usage/access-control/roles.md
 - Architecture:
@@ -130,6 +127,9 @@ nav:
         - File Storage: operations/configuration/file-storage.md
     - Database: operations/database.md
     - Observability: operations/observability.md
+    - Secret Management:
+        - Overview: operations/secret-management/overview.md
+        - Providers: operations/secret-management/providers.md
     - Scaling: operations/scaling.md
 - Development:
   - Overview: development/overview.md

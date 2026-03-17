@@ -2,13 +2,19 @@
 
 <!-- TODO: Add more! -->
 
-* New *powerful [CEL]-based policy engine*, providing more flexibility while being more efficient
-than the engine shipped with v4. <!-- TODO: Link to policy docs when ready! -->
-* Ability to automatically audit vulnerabilities across the entire portfolio using [CEL] expressions. <!-- TODO: Link to docs when ready! -->
-* Hash-based *integrity analysis* for components. <!-- TODO: Link to integrity analysis docs when ready! -->
-* The API server now supports *high availability (HA) deployments* in active-active configuration.
-* *Zero downtime deployments* when running API server in HA configuration.
-* *Greatly reduced resource footprint* of the API server.
+* *Designed for high availability*. Horizontal scalability, distributed work queues, and the option to separate
+  web and worker nodes. No single point of failure, and no additional infrastructure requirements outside the 
+  PostgreSQL database you already have.
+* *Resiliency as a first-class citizen*. Durable execution guarantees that background work such as BOM processing,
+  vulnerability analysis, and notifications completes even through node restarts and crashes.
+* *New powerful [CEL]-based policy engine*, providing more flexibility while being more efficient
+  than the engine shipped with v4. Policies can be complex, don't let rigid UI conditions limit you.
+* *Automatic portfolio-wide vulnerability analysis*. Leverage the new policy engine to audit
+  and suppress vulnerabilities before they surface in the UI or trigger notifications.
+* *Component integrity verification*. Detect components whose hashes don't match what's published in package
+  repositories.
+* *Centralized secrets management*. Manage credentials for integrations securely in one place.
+* *Reduced resource footprint*.
 
 ## Architecture / Operations
 

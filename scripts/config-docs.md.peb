@@ -3,54 +3,50 @@
 
   Generated with: {{ generateCommand }}
 -->
+
+## Glossary
+
+### Required Properties
+
+Properties marked with <strong style="color: red">*</strong> are required. A required property must never be unset.
+
+### Property Types
+
+Configuration properties may use the following types:
+
+| Type | Description |
+|:-----|:------------|
+| `boolean` | `true` or `false` |
+| `cron` | A [cron expression](https://en.wikipedia.org/wiki/Cron#Cron_expression) (e.g. `0 0 * * *`) |
+| `double` | A decimal number (e.g. `3.14`) |
+| `duration` | An [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations) (e.g. `PT30S`, `PT5M`, `PT1H`) |
+| `enum` | One of a fixed set of values, refer to *Valid Values* |
+| `integer` | A whole number (e.g. `42`) |
+| `string` | A text value |
+
 {% for entry in propertiesByCategory %}
 ## {{ entry.key }}
 
 {% for property in entry.value -%}
-### {{ property.name }}
+<span id="{{ property.anchor }}">**`{{ property.name }}`**{% if property.required %} <strong style="color: red">*</strong>{% endif %} [¶](#{{ property.anchor }}){ .headerlink }</span>
+:   {{ property.description }}
 
-{{ property.description }}
+    {% if property.deprecated -%}
+    !!! warning "Deprecated"
+        {{ property.deprecated }}
 
-{% if property.deprecated -%}
-!!! warning "Deprecated"
-    {{ property.deprecated }}
-{% endif %}
-
-<table>
-  <tbody style="border: 0">
-    <tr>
-      <th style="text-align: right">Required</th>
-      <td style="border-width: 0">{{ property.required }}</td>
-    </tr>
-    <tr>
-      <th style="text-align: right">Type</th>
-      <td style="border-width: 0"><code>{{ property.type }}</code></td>
-    </tr>
-    {% if property.validValues -%}
-    <tr>
-      <th style="text-align: right">Valid Values</th>
-      <td style="border-width: 0"><code>{{ property.validValues }}</code></td>
-    </tr>
     {% endif -%}
-    <tr>
-      <th style="text-align: right">Default</th>
-      <td style="border-width: 0"><code>{{ property.defaultValue }}</code></td>
-    </tr>
-    {% if property.example -%}
-    <tr>
-      <th style="text-align: right">Example</th>
-      <td style="border-width: 0"><code>{{ property.example }}</code></td>
-    </tr>
-    {% endif -%}
-    <tr>
-      <th style="text-align: right">ENV</th>
-      <td style="border-width: 0"><code>{{ property.env }}</code></td>
-    </tr>
-  </tbody>
-</table>
+    <table>
+      <tr><th>Type</th><td style="border-width: 0"><code>{{ property.type }}</code></td></tr>
+      <tr><th>Default</th><td><code>{{ property.defaultValue }}</code></td></tr>
+      {% if property.validValues -%}
+      <tr><th>Valid Values</th><td><code>{{ property.validValues }}</code></td></tr>
+      {% endif -%}
+      {% if property.example -%}
+      <tr><th>Example</th><td><code>{{ property.example }}</code></td></tr>
+      {% endif -%}
+      <tr><th>ENV</th><td><code>{{ property.env }}</code></td></tr>
+    </table>
 
-{% if not loop.last %}
----
-{% endif %}
 {% endfor %}
 {% endfor %}

@@ -798,7 +798,7 @@ Configuration properties may use the following types:
 :   Defines the interval in milliseconds in which leadership lease acquisition or extension is attempted.  <br/><br/>  Must be smaller than [`dt.dex-engine.leader-election.lease-duration-ms`](#dtdex-engineleader-electionlease-duration-ms) to avoid  frequent leadership changes.  
 
     <table>
-      <tr><th>Type</th><td style="border-width: 0"><code></code></td></tr>
+      <tr><th>Type</th><td style="border-width: 0"><code>integer</code></td></tr>
       <tr><th>Default</th><td><code>15000</code></td></tr>
       <tr><th>ENV</th><td><code>DT_DEX_ENGINE_LEADER_ELECTION_LEASE_CHECK_INTERVAL_MS</code></td></tr>
     </table>
@@ -807,7 +807,7 @@ Configuration properties may use the following types:
 :   Defines the duration in milliseconds for which leadership leases are acquired.  
 
     <table>
-      <tr><th>Type</th><td style="border-width: 0"><code></code></td></tr>
+      <tr><th>Type</th><td style="border-width: 0"><code>integer</code></td></tr>
       <tr><th>Default</th><td><code>30000</code></td></tr>
       <tr><th>ENV</th><td><code>DT_DEX_ENGINE_LEADER_ELECTION_LEASE_DURATION_MS</code></td></tr>
     </table>
@@ -960,13 +960,13 @@ Configuration properties may use the following types:
       <tr><th>ENV</th><td><code>DT_API_KEY_PREFIX</code></td></tr>
     </table>
 
-<span id="dtauthjwtttlseconds">**`dt.auth.jwt.ttl.seconds`** [¶](#dtauthjwtttlseconds){ .headerlink }</span>
-:   Defines the number of seconds for which JWTs issued by Dependency-Track will be valid for.  
+<span id="dtauthsession-timeout-ms">**`dt.auth.session-timeout-ms`** [¶](#dtauthsession-timeout-ms){ .headerlink }</span>
+:   Defines the user session timeout in milliseconds.  
 
     <table>
       <tr><th>Type</th><td style="border-width: 0"><code>integer</code></td></tr>
-      <tr><th>Default</th><td><code>604800</code></td></tr>
-      <tr><th>ENV</th><td><code>DT_AUTH_JWT_TTL_SECONDS</code></td></tr>
+      <tr><th>Default</th><td><code>28800000</code></td></tr>
+      <tr><th>ENV</th><td><code>DT_AUTH_SESSION_TIMEOUT_MS</code></td></tr>
     </table>
 
 <span id="dtbcryptrounds">**`dt.bcrypt.rounds`** <strong style="color: red">*</strong> [¶](#dtbcryptrounds){ .headerlink }</span>
@@ -1916,6 +1916,15 @@ Configuration properties may use the following types:
       <tr><th>Type</th><td style="border-width: 0"><code>duration</code></td></tr>
       <tr><th>Default</th><td><code>PT1M</code></td></tr>
       <tr><th>ENV</th><td><code>DT_TASK_EPSS_MIRROR_LOCK_MIN_DURATION</code></td></tr>
+    </table>
+
+<span id="dttaskexpired-session-cleanupcron">**`dt.task.expired-session-cleanup.cron`** <strong style="color: red">*</strong> [¶](#dttaskexpired-session-cleanupcron){ .headerlink }</span>
+:   Cron expression of the expired session cleanup task.  
+
+    <table>
+      <tr><th>Type</th><td style="border-width: 0"><code>cron</code></td></tr>
+      <tr><th>Default</th><td><code>0 * * * *</code></td></tr>
+      <tr><th>ENV</th><td><code>DT_TASK_EXPIRED_SESSION_CLEANUP_CRON</code></td></tr>
     </table>
 
 <span id="dttaskfortifysscuploadcron">**`dt.task.fortify.ssc.upload.cron`** <strong style="color: red">*</strong> [¶](#dttaskfortifysscuploadcron){ .headerlink }</span>

@@ -1686,6 +1686,15 @@ Configuration properties may use the following types:
       <tr><th>ENV</th><td><code>DT_SECRET_MANAGEMENT_DATABASE_DATASOURCE_NAME</code></td></tr>
     </table>
 
+<span id="dtsecret-managementdatabasekek">**`dt.secret-management.database.kek`** [¶](#dtsecret-managementdatabasekek){ .headerlink }</span>
+:   Defines a base64-encoded AES-256 key (32 bytes) to use as the key encryption key (KEK)  for the database secret manager.  <br/><br/>  A secure key may be generated using OpenSSL like this: `openssl rand -base64 32`  <br/><br/>  When set, takes precedence over [`dt.secret-management.database.kek`](#dtsecret-managementdatabasekek)-keyset.path.  Unlike the keyset file approach, this option does not support KEK rotation.  <br/><br/>  Must be the same for all nodes in the cluster. When different keys are detected,  the application will fail to start.  
+
+    <table>
+      <tr><th>Type</th><td style="border-width: 0"><code>string</code></td></tr>
+      <tr><th>Default</th><td><code>null</code></td></tr>
+      <tr><th>ENV</th><td><code>DT_SECRET_MANAGEMENT_DATABASE_KEK</code></td></tr>
+    </table>
+
 <span id="dtsecret-managementdatabasekek-keysetcreate-if-missing">**`dt.secret-management.database.kek-keyset.create-if-missing`** [¶](#dtsecret-managementdatabasekek-keysetcreate-if-missing){ .headerlink }</span>
 :   Defines whether a key encryption keyset should be created if it doesn't already exist.  
 
@@ -1696,7 +1705,7 @@ Configuration properties may use the following types:
     </table>
 
 <span id="dtsecret-managementdatabasekek-keysetpath">**`dt.secret-management.database.kek-keyset.path`** [¶](#dtsecret-managementdatabasekek-keysetpath){ .headerlink }</span>
-:   Defines the path to the key encryption keyset to use for the database secret manager.  <br/><br/>  Required when [`dt.secret-management.provider`](#dtsecret-managementprovider) is `database`.  
+:   Defines the path to the key encryption keyset to use for the database secret manager.  <br/><br/>  Must point to the same file for all nodes in the cluster, e.g. using a shared volume  or mounted k8s secret. When different keysets are detected, the application will fail  to start.  
 
     <table>
       <tr><th>Type</th><td style="border-width: 0"><code>string</code></td></tr>

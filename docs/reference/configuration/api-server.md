@@ -1050,15 +1050,6 @@ Configuration properties may use the following types:
       <tr><th>ENV</th><td><code>DT_INIT_TASKS_ENABLED</code></td></tr>
     </table>
 
-<span id="dtsecretkeypath">**`dt.secret.key.path`** [¶](#dtsecretkeypath){ .headerlink }</span>
-:   Defines the path to the secret key to be used for data encryption and decryption.  The key will be generated upon first startup if it does not exist.  
-
-    <table>
-      <tr><th>Type</th><td style="border-width: 0"><code>string</code></td></tr>
-      <tr><th>Default</th><td><code>${dt.data.directory}/keys/secret.key</code></td></tr>
-      <tr><th>ENV</th><td><code>DT_SECRET_KEY_PATH</code></td></tr>
-    </table>
-
 <span id="dttmpdelaybomprocessednotification">**`dt.tmp.delay.bom.processed.notification`** [¶](#dttmpdelaybomprocessednotification){ .headerlink }</span>
 :   Delays the BOM_PROCESSED notification until the vulnerability analysis associated with a given BOM upload  is completed. The intention being that it is then "safe" to query the API for any identified vulnerabilities.  This is specifically for cases where polling the /api/v1/bom/token/<TOKEN> endpoint is not feasible.  THIS IS A TEMPORARY FUNCTIONALITY AND MAY BE REMOVED IN FUTURE RELEASES WITHOUT FURTHER NOTICE.  
 

@@ -1,5 +1,12 @@
 ### Upgrading to 0.7.0
 
+* **Secrets for Fortify SSC, DefectDojo, Kenna Security, and repository passwords have been
+  migrated to [secret management](../operations/secret-management/overview.md).** During the
+  upgrade, Fortify SSC tokens, DefectDojo API keys, and Kenna Security tokens are cleared from
+  the database, and repositories with stored passwords are disabled. After upgrading, configure
+  the required secrets via the secret management provider, then manually re-enable the affected
+  repositories.
+
 * **Bearer tokens changed from JWTs to opaque tokens.** All existing user sessions
   are invalidated on upgrade. Users will need to log in again. The session timeout configuration
   property has been renamed:

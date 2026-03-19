@@ -10,7 +10,7 @@ so please do let us know if you need any of them.
 
 The default provider, which stores secrets in the `SECRET` database table.
 
-Secrets are encrypted using [AES-GCM-128].
+Secrets are encrypted using [AES-GCM-256].
 The provider implements [envelope encryption] to enable [key rotation](#kek-rotation).
 All crypto operations are facilitated by [Google Tink].
 
@@ -20,6 +20,7 @@ The provider may be configured using the following properties:
 
 * [`dt.secret-management.provider`](../../reference/configuration/api-server.md#dtsecret-managementprovider)
 * [`dt.secret-management.database.datasource.name`](../../reference/configuration/api-server.md#dtsecret-managementdatabasedatasourcename)
+* [`dt.secret-management.database.kek`](../../reference/configuration/api-server.md#dtsecret-managementdatabasekek)
 * [`dt.secret-management.database.kek-keyset.path`](../../reference/configuration/api-server.md#dtsecret-managementdatabasekek-keysetpath)
 * [`dt.secret-management.database.kek-keyset.create-if-missing`](../../reference/configuration/api-server.md#dtsecret-managementdatabasekek-keysetcreate-if-missing)
 
@@ -64,17 +65,31 @@ Refer to [Creating KEK Keysets](#creating-kek-keysets) for an example.
     Dependency-Track does not yet leverage this capability. If this is important to you,
     please raise an enhancement request.
 
+#### Config-Based KEK
+
+As an alternative to the keyset file, the KEK can be provided directly as a base64-encoded
+AES-256 key (32 bytes) via the [`dt.secret-management.database.kek`](../../reference/configuration/api-server.md#dtsecret-managementdatabasekek)
+property. When set, this takes precedence over the keyset file configuration.
+
+This is useful for multi-instance deployments where sharing a keyset file across nodes
+is inconvenient, for example when the KEK is stored in a secret manager that exposes
+values as environment variables rather than files.
+
+!!! warning
+    The config-based KEK does **not** support [KEK rotation](#kek-rotation). If you anticipate
+    the need to rotate the KEK, use the [file-based keyset approach](#creating-kek-keysets) instead.
+
 #### Creating KEK Keysets
 
 To create a new KEK keyset, the following prerequisites are required:
 
 * A working [Google Tinkey] installation
 
-Create a new keyset using the `AES128_GCM` preset:
+Create a new keyset using the `AES256_GCM` preset:
 
 ```shell linenums="1"
 tinkey create-keyset \
-  --key-template AES128_GCM \
+  --key-template AES256_GCM \
   --out secret-management-kek.json \
   --out-format json
 ```
@@ -184,11 +199,11 @@ tinkey list-keyset \
     }
     ```
 
-Add a new key using the `AES128_GCM` template:
+Add a new key using the `AES256_GCM` template:
 
 ```shell linenums="1"
 tinkey add-key \
-  --key-template AES128_GCM \
+  --key-template AES256_GCM \
   --in secret-management-kek.json \
   --in-format json \
   --out secret-management-kek-new.json \
@@ -342,7 +357,7 @@ in memory. This is configured via:
     Take this into consideration when enabling the cache and configuring
     the `expire-after-write-ms` option.
 
-[AES-GCM-128]: https://en.wikipedia.org/wiki/Galois/Counter_Mode
+[AES-GCM-256]: https://en.wikipedia.org/wiki/Galois/Counter_Mode
 [AWS secrets manager]: https://aws.amazon.com/secrets-manager/
 [Azure Key Vault]: https://azure.microsoft.com/en-us/products/key-vault
 [Google Tink]: https://developers.google.com/tink/what-is
